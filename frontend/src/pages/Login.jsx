@@ -28,7 +28,7 @@ const LoginPage = () => {
     setError(null);
 
     try {
-      const response = await axios.post(`${apiUrl}/users/login`, {
+      const response = await axios.post(`${apiUrl}/login`, {
         email,
         password,
       });
