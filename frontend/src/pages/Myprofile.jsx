@@ -21,7 +21,7 @@ const Myprofile = () => {
         const token = localStorage.getItem('userToken');
         if (!token) return navigate('/'); 
 
-        const response = await axios.get(`${apiUrl}/users/login`, {
+        const response = await axios.get(`${apiUrl}/api/users/login`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
