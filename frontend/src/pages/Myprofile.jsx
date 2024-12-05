@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 const Myprofile = () => {
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -12,7 +14,7 @@ const Myprofile = () => {
 
   const navigate = useNavigate();
 
-  const apiUrl = import.meta.env.VITE_API_URL;
+  
 
   // Fetch user profile data
   useEffect(() => {
@@ -21,10 +23,9 @@ const Myprofile = () => {
         const token = localStorage.getItem('userToken');
         if (!token) return navigate('/'); 
 
-        const response = await axios.get(`${apiUrl}/api/users/login`, {
+        const response = await axios.get(`${apiUrl}/api/profile`, {
           headers: { Authorization: `Bearer ${token}` },
         });
-
         setUserData(response.data);
         setFormData({
           name: response.data.name,

@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+ // API URL 
+ const apiUrl = import.meta.env.VITE_API_URL;
+
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -10,8 +13,7 @@ const LoginPage = () => {
 
   const navigate = useNavigate();
   
-  // API URL 
-  const apiUrl = import.meta.env.VITE_API_URL;
+ 
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -28,7 +30,7 @@ const LoginPage = () => {
     setError(null);
 
     try {
-      const response = await axios.post(`${apiUrl}/api/login`, {
+      const response = await axios.post(`${apiUrl}/api/users/login`, {
         email,
         password,
       });

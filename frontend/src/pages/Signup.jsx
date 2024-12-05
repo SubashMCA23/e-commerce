@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 const Signup = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -12,7 +14,7 @@ const Signup = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const apiUrl = import.meta.env.VITE_API_URL;
+  
 
 
   const handleChange = (e) => {
@@ -22,8 +24,9 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`${apiUrl}/api/register`, formData);
-      navigate("/");
+      
+      await axios.post(`${apiUrl}/api/users/register`,formData);
+      navigate("/login");
     } catch (err) {
       setError(err.response?.data?.message || "Signup failed!");
       console.log(error)
