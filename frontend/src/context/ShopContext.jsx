@@ -5,7 +5,7 @@ export const ShopContext = createContext();
 
 const ShopContextProvider = (props) => {
   const [cart, setCart] = useState([]); 
-  const currency = "$";
+  const currency = "₹";
   const delivery = 10;
 
   
